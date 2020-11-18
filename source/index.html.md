@@ -1,241 +1,132 @@
 ---
-title: API Reference
+title: SFT
 
-language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
-  - javascript
-
-toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
-
-includes:
-  - errors
+language_tabs:
+  - ANY
 
 search: true
-
-code_clipboard: true
 ---
 
-# Introduction
+# SFT
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+_0基础一二三步接入区\_块\_链主网_
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+# 服务 Server
 
-This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
+## 获取地址
 
-# Authentication
+>
 
-> To authorize, use this code:
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+```
 ```
 
-```python
-import kittn
 
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here" \
-  -H "Authorization: meowmeowmeow"
-```
+> 请求返回示例
 
 ```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens" \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2" \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "code" : 200, # int
+  "msg"  : "successed", # string
+  "err"  : "null", # string
+  "data" :
+    {
+      "address":"...ADDRESS...", #string
+    },
 }
 ```
 
-This endpoint retrieves a specific kitten.
+### http请求
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+`POST  路径参考: "\<WEBSITE/IP\>:\<PORT\>/api/get_NewAddress/"`
 
-### HTTP Request
+### 请求参数
 
-`GET http://example.com/kittens/<ID>`
+|名称       |描述     |类型     |必填 |样例         |取值范围|
+|:----      |:--:     |:---:   |:--: |:--         |:-- |
+|timestamp  |时间戳   |String  |Yes  |"1234554321" |---|
+|user_id    |用户名   |String  |Yes  |"2020019428" |---|
+|block      |主链名   |String  |Yes  |"Bitcoin"    |"Bitcoin"<br>"Ethereum"  |
+|type       |类型     |String  |Yes  |"full"       |"full"|
+|\_sign     |签名     |String  |Yes  |"mySign"     |---|
 
-### URL Parameters
+## 转账
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+>
 
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
+```
 ```
 
-```python
-import kittn
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2" \
-  -X DELETE \
-  -H "Authorization: meowmeowmeow"
-```
+> 请求返回示例
 
 ```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
 {
-  "id": 2,
-  "deleted" : ":("
+  "code" : 200, # int
+  "msg"  : "successed", # string
+  "err"  : "null", # string
+  "data" : "null", # string
 }
 ```
 
-This endpoint deletes a specific kitten.
+### http请求
 
-### HTTP Request
+`POST  路径参考: "\<WEBSITE/IP\>:\<PORT\>/api/transfer_Out/"`
 
-`DELETE http://example.com/kittens/<ID>`
+### 请求参数
 
-### URL Parameters
+|名称       |描述    |类型    |必填 |样例           |取值范围|
+|:----      |:--:   |:---:   |:--: |:--           |:-- |
+|timestamp  |时间戳  |String |Yes  |"1234554321"   |---|
+|user_id    |用户名  |String |Yes  |"2020019428"   |---|
+|block      |主链名  |String |Yes  |"Bitcoin"      |"Bitcoin"<br>"Ethereum"|
+|coin_id    |货币名  |String |Yes  |"BTC"          |"BTC"<br>"ETHER"<br>"USDT"|
+|order_id   |订单号  |String |Yes  |"..orderid.."  |---|
+|type       |类型    |String |Yes  |"full"         |"full"|
+|from       |发送者  |String |Yes  |"...from..."   |---|
+|to         |接收者  |String |Yes  |"...to..."     |---|
+|amount     |数额    |String |Yes  |"100.0"        |---|
+|\_sign     |签名    |String |Yes  |"mySign"       |---|
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
+# 回调 Callback
 
+## 通知
+
+>
+
+
+```
+```
+
+
+> 请求返回示例
+
+```javascript
+ {
+  "code" : 200, # int
+  "msg"  : "successed", # string
+  "err"  : "null", # string
+  "data" : "null", # string
+}
+```
+
+### http请求
+
+`POST  路径参考: "\<WEBSITE/IP\>:\<PORT\>/api/notification/"`
+
+### 请求参数
+
+|名称       |描述   |类型   |必填  |样例         |取值范围|
+|:----      |:--:  |:---:  |:--:  |:--         |:-- |
+|timestamp  |时间戳 |String |Yes  |"1234554321" |---|
+|status     |状态   |String |Yes  |"pending"    |"pending"<br>"confirmed"<br>"secured"<br>"cancelled"|
+|block      |主链名 |String |Yes  |"Bitcoin"    |"Bitcoin"<br>"Ethereum"|
+|coin_id    |货币名 |String |Yes  |"BTC"        |"BTC"<br>"ETHER"<br>"USDT"|
+|app_id     |应用名 |String |Yes  |"Test_APP"   |(_用户自定义_)|
+|order_id   |订单号 |String |Yes  |"..orderid.."|---|
+|hash       |哈希值 |String |Yes  |"...hash..." |---|
+|type       |类型   |String |Yes  |"Tx_In"      |"Tx_In"<br>"Tx_Out"|
+|from       |发送者 |String |No   |"...from..." |---|
+|to         |接收者 |String |Yes  |"...to..."   |---|
+|amount     |数额   |String |Yes  |"100.0"      |---|
+|\_sign     |签名   |String |Yes  |"mySign"     |---|
