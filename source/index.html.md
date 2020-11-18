@@ -9,7 +9,11 @@ search: true
 
 # SFT
 
-这里是一些介绍内容
+SFT-Solutions for tomorrow
+
+SFT是主侧链机制的公链生态体系。主链主要提供数据存储以及调用功能，侧链则为较为复杂的合约运行提供支持。
+
+SFT同样具备图灵完备以及以太虚拟机，为了方便合约开发者进行迁移，SFT同样支持Solidy语言进行合约编写以及跨链服务
 
 SFT白皮书: [SFT白皮书](http://sftgroup.org/SFT_solutions_for_tomorrow.pdf "SFT白皮书")
 
