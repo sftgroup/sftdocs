@@ -17,6 +17,8 @@ SFT同样具备图灵完备以及以太虚拟机，为了方便合约开发者�
 
 SFT白皮书: [SFT白皮书](http://sftgroup.org/SFT_solutions_for_tomorrow.pdf "SFT白皮书")
 
+SFT项目地址: [跳转](https://github.com/sftgroup/SFT "SFT项目地址")
+
 _0基础一二三步接入区\_块\_链主网_
 
 # 服务 Server
