@@ -9,6 +9,10 @@ search: true
 
 # SFT
 
+这里是一些介绍内容
+
+SFT白皮书: [SFT白皮书](http://sftgroup.org/SFT_solutions_for_tomorrow.pdf "SFT白皮书")
+
 _0基础一二三步接入区\_块\_链主网_
 
 # 服务 Server
