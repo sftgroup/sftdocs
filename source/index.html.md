@@ -27,7 +27,7 @@ SFT项目地址: [跳转](https://github.com/sftgroup/SFT "SFT项目地址")
 
 **扫码下载**
 
-![树洞应用下载二维码](https://github.com/sftgroup/sftdocs/blob/main/source/qrcode.png "二维码")
+![树洞应用下载二维码](https://api.trochil.cn/sft/image/qrcode.png "二维码")
 
 # _0基础一二三步接入区\_块\_链主网_
 
